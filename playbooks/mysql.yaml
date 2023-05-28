@@ -5,6 +5,8 @@
   tasks:
     - name: installing apache
       ansible.builtin.apt:
-        name: mysql-server
-        state: latest
+        name: 
+          - mysql-server
         update_cache: yes
+        state: latest
+        
