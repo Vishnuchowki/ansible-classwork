@@ -4,7 +4,7 @@
   become: yes
   tasks:
     - name: update packages and install tree
-      apt:
+      ansible.builtin.apt:
         name: tree
         state: present
         update_cache: yes
