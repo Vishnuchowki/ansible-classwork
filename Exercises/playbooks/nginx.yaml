@@ -12,4 +12,4 @@
     - name: restart service apache
       ansible.builtin.service:
         name: nginx
-        state: start
+        state: started
