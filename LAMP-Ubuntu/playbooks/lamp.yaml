@@ -1,0 +1,28 @@
+---
+- name: installing lamp on centos 
+  hosts: all 
+  become: yes 
+  tasks: 
+    - name: installing apache 
+      ansible.builtin.dnf:
+        name: apache2
+        update_cache: yes
+        state: present 
+          
+    - name: Installing php 
+      ansible.builtin.dnf:
+        name: 
+          - php 
+          - php-mysql  
+        state: present 
+    - name: copy content 
+      ansible.builtin.copy:
+        src: info.php
+        dest: /var/www/html/info.php 
+    - name: restart service apache
+      ansible.builtin.service:
+        name: apache2
+        state: restarted
+        
+      
+         
