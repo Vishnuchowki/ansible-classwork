@@ -22,7 +22,7 @@
         dest: /var/www/html/info.php 
     - name: restart service apache
       ansible.builtin.service:
-        name: httpd
+        name: apache2
         state: restarted
         
       
