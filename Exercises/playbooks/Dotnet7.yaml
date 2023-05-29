@@ -5,8 +5,7 @@
   tasks:
     - name: installing Dotnet-7
       ansible.builtin.apt:
-        name: dotnet-sdk-7.0
+        name: dotnet-sdk=7.0
         update_cache: yes
         state: present
-        # add this tinfo
-        
+    
