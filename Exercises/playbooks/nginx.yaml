@@ -1,0 +1,15 @@
+---
+- name: installing apache
+  hosts: all
+  become: yes
+  tasks:
+    - name: installing apache
+      ansible.builtin.apt:
+        name: 
+          - nginx
+        update_cache: yes
+        state: present
+    - name: restart service apache
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
