@@ -1,6 +1,6 @@
 ---
 - name: installing lamp on redhat 
-  hosts: redhathosts 
+  hosts: redhat
   become: yes 
   tasks: 
     - name: installing apache 
