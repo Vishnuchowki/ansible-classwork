@@ -1,6 +1,6 @@
 ---
 - name: installing lamp on redhat 
-  hosts: all 
+  hosts: redhathosts 
   become: yes 
   tasks: 
     - name: installing apache 
@@ -11,7 +11,7 @@
       ansible.builtin.service: 
         name: httpd
         enabled: yes
-        state: start          
+        state: started          
     - name: Installing php 
       ansible.builtin.yum:
         name: 
