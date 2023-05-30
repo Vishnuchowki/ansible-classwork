@@ -1,9 +1,9 @@
 ---
-- name: installing apache
+- name: installing nginx
   hosts: all
   become: yes
   tasks:
-    - name: installing apache
+    - name: installing nginx
       ansible.builtin.apt:
         name: 
           - nginx

@@ -1,20 +1,21 @@
 ---
-- name: installing lamp on ubuntu 
+- name: installing lamp on redhat 
   hosts: all 
   become: yes 
   tasks: 
     - name: installing apache 
-      ansible.builtin.apt:
-        name: apache2
-        update_cache: yes
+      ansible.builtin.yum:
+        name: httpd
         state: present 
-          
+    - name: enabled and start service apache
+      ansible.builtin.service: 
+        name: httpd
+        enabled: yes
+        state: start          
     - name: Installing php 
-      ansible.builtin.apt:
+      ansible.builtin.yum:
         name: 
           - php 
-          - libapache2-mod-php 
-          - php-mysql  
         state: present 
     - name: copy content 
       ansible.builtin.copy:
@@ -22,8 +23,10 @@
         dest: /var/www/html/info.php 
     - name: restart service apache
       ansible.builtin.service:
-        name: apache2
+        name: httpd
         state: restarted
+    
+    
         
       
          
