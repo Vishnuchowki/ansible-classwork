@@ -17,10 +17,15 @@
         name: 
           - php 
         state: present 
+      notify:
+        - restart service apache
     - name: copy content 
       ansible.builtin.copy:
         src: info.php
-        dest: /var/www/html/info.php 
+        dest: /var/www/html/info.php
+      notify:
+        - restart service apache
+  handlers:
     - name: restart service apache
       ansible.builtin.service:
         name: httpd
