@@ -1,5 +1,5 @@
 ---
-- name: install lamp server on ubuntu
+- name: install lamp server on redhat
   hosts: redhat
   become: yes
   tasks:
@@ -12,7 +12,7 @@
         name: httpd
         enabled: yes
         state: started
-    - name: install apache server
+    - name: install php server
       ansible.builtin.yum:
         name: php
         state: present
