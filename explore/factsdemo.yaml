@@ -3,6 +3,12 @@
   become: no 
   hosts: all 
   tasks: 
-    - name: print OS
+    - name: print OS details
       ansible.builtin.debug:
-        msg: "{{ansible_facts['os_family']}}"
+        msg: "family:{{ansible_facts['os_family']}} distribution:{{ansible_facts['distribution']}}"
+    - name: print networking information 
+      ansible.builtin.debug:
+        msg: "networking:{{eth0.ipv4.address}}"
+    - name: print Kernal version 
+      ansible.builtin.debug:
+        msg: "Kernal_Version:{{kernel_version}}"
