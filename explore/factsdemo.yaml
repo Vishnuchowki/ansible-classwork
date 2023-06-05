@@ -8,7 +8,7 @@
         msg: "family:{{ansible_facts['os_family']}} distribution:{{ansible_facts['distribution']}}"
     - name: print networking information 
       ansible.builtin.debug:
-        msg: "networking:{{eth0.ipv4.address}}"
+        msg: "networking:{{ansible_facts.eth0.ipv4.address}}"
     - name: print Kernal version 
       ansible.builtin.debug:
-        msg: "Kernal_Version:{{kernel_version}}"
+        msg: "Kernal_Version:{{ansible_facts.kernel_version}}"
