@@ -4,5 +4,5 @@
   hosts: all 
   tasks: 
     - name: print OS
-      ansible.builtin.debug
+      ansible.builtin.debug:
         msg: ansible_facts['os_family']
