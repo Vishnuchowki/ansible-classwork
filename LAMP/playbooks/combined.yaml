@@ -13,11 +13,17 @@
       ansible.builtin.package :
         name: "{{ package_name }}"
         state: present
+    - name: Debug apache Installed
+      ansible.builtin.debug:
+        msg: "Installed Apache using debug {{ package_name }}"
     - name: enable and start apache
       ansible.builtin.systemd:
         name: "{{ package_name }}"
         enabled: yes
         state: started
+    - name: Debug Started Apache 
+      ansible.builtin.debug:
+        msg: "Enabled and started Apache {{ package_name }}"
     - name: install httpd php server
       ansible.builtin.package:
         name: "{{ item }}"
@@ -25,12 +31,18 @@
       loop: "{{ php_package }}"
       notify:
         - restart apache
+    - name: Debug php module Installed
+      ansible.builtin.debug:
+        msg: "Installed PHP- Package {{ php_package }}"
     - name: copy the httpd info.php file
       ansible.builtin.copy:
         src: info.php
         dest: "{{ info_page_path }}"
       notify:
         - restart apache
+    - name: debug info.php
+      ansible.builtin.debug:
+        msg: "created info.php at {{ info_page_path }}"
   handlers:
     - name: restart service apache
       ansible.builtin.service:
