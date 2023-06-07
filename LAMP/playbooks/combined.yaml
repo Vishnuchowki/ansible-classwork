@@ -8,7 +8,7 @@
     - name: check if the playbook is being executed on supported OS 
       ansible.builtin.fail:
         msg: "This playbook is designed to work on Ubuntu and Redhat"
-      when: ansible_facts['distribution'] != "Ubuntu" and ansible_facts['distribution'] != "Redhat"
+      when: ansible_facts['distribution'] != "Ubuntu" and ansible_facts['distribution'] != "RedHat"
     - name: install httpd server
       ansible.builtin.package :
         name: "{{ package_name }}"
